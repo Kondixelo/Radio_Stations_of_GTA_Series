@@ -128,7 +128,7 @@ namespace AppKonsolowa1
             foreach (string game in gamesList)
             {
                 string gameName = new System.IO.DirectoryInfo(game).Name;
-                Console.WriteLine(gameNumber + " - " + gameName);
+                Console.WriteLine(gameNumber + " -> " + gameName);
                 gamesDict.Add(gameNumber, game);
                 gameNumber += 1;
             }
@@ -151,8 +151,8 @@ namespace AppKonsolowa1
             {
                 string stationName = Path.GetFileName(station);
                 stationName = stationName.Substring(0, stationName.Length - 4);
-                stationName = stationName.Substring(2, stationName.Length - 2);
-                Console.WriteLine(stationNumber + " - " + stationName);
+                string[] stationNameParts = stationName.Split("%");
+                Console.WriteLine(stationNumber + " -> " + stationNameParts[1]);
                 stationsDict.Add(stationNumber, station);
                 stationNumber += 1;
             }
@@ -172,7 +172,7 @@ namespace AppKonsolowa1
             string[] trackList = File.ReadAllLines(stationPath);
             foreach (string track in trackList)
             {
-                Console.WriteLine(trackNumber + " - " + track);
+                Console.WriteLine(trackNumber + ". " + track);
                 trackNumber += 1;
             }
         }
