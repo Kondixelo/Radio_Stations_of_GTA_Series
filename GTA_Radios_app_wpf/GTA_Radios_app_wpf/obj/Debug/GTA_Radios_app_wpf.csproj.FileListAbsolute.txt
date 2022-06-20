@@ -13,3 +13,4 @@ C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\obj
 C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\obj\Debug\GTA_Radios_app_wpf.csproj.CoreCompileInputs.cache
 C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\obj\Debug\GTA_Radios_app_wpf.exe
 C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\obj\Debug\GTA_Radios_app_wpf.pdb
+C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\obj\Debug\App.baml

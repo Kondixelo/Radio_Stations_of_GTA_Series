@@ -5,47 +5,65 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GTA_Radios_app_wpf"
         mc:Ignorable="d"
-        Title="Radio stations of the games of Grand Theft Auto series"  MinHeight="450" MinWidth="800" Height="720" Width="1280">
+        Title="Radio stations of the games of Grand Theft Auto series"  MinHeight="960" MinWidth="1280" Height="960" Width="1280">
+    
+
 
     <Grid Background="#091d3d">
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        
-        <!--grid 0-0-->
-        <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,5" TextWrapping="Wrap" Foreground="LightGreen"  FontFamily="Verdana" Text="Welcome to application &quot;Radio stations of the games of Grand Theft Auto series&quot;. Choose a game, then a station or search station or a track." Grid.Column="0" Grid.Row="0">
-        </TextBlock>
 
-        <!--grid 0-1-->
-        <ListBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,5" Grid.Column="0" Grid.Row="1"/>
-        
-        
+        <!--grid 0-0-->
+        <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,5,5,5" TextWrapping="Wrap" Foreground="Cornsilk"  FontSize="42" Style="{StaticResource CustomFont}" Text="Welcome to application &quot;Radio stations of the games of Grand Theft Auto series&quot;. Choose a game, then a station or search station or a track." Grid.Column="0" Grid.Row="0" FontFamily="/GTA_Radios_app_wpf;component/Fonts/#Pricedown"/>
+
+        <!--grid 0-1   color: #091d3d-->
+        <ListBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,0" Grid.Column="0" Grid.Row="1" Background="#000000">
+            <ListBoxItem>siema
+            </ListBoxItem>
+        </ListBox>
         <!--grid 0-2-->
-        <TextBlock Foreground="Gray" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Stretch" Margin="5,5,5,5" TextWrapping="Wrap" VerticalAlignment="Bottom">
+        <Button Grid.Column="0" Grid.Row="2" Width="60" Height="60" Grid.ColumnSpan="2" FontSize="40" HorizontalAlignment="Center" Margin="150,0,0,0" Style="{DynamicResource ButtonRounded}" >&#10006;</Button>
+        <!--back button-->                                   
+        <Button Grid.Column="0" Grid.Row="2" Width="60" Height="60" Grid.ColumnSpan="2" FontSize="40" HorizontalAlignment="Center" Margin="0,0,0,0" Style="{DynamicResource ButtonRounded}">&#x2630;</Button>
+        <!--Menu button-->                                    
+        <Button Grid.Column="0" Grid.Row="2" Width="60" Height="60" Grid.ColumnSpan="2" FontSize="40" HorizontalAlignment="Center" Margin="0,0,150,0" Style="{DynamicResource ButtonRounded}">&#x21A9;</Button>
+        <!--exit button-->
+
+
+        <!--grid 1-0-->
+        <TextBox Height="60"
+                 HorizontalAlignment="Left"
+                 Width="350"
+                 Text="Type station or track..."
+                 Margin="5,5,5,5" 
+                 TextWrapping="Wrap" 
+                 FontFamily="Lucida Console" 
+                 FontSize="20"
+                 TextAlignment="Left"
+                 VerticalContentAlignment="Center"
+                 Grid.Column="0" Grid.Row="2"
+                 
+                 RenderTransformOrigin="-0.2,1.736" Style="{DynamicResource TextBoxType}" />
+        <Button Grid.Column="0"  Grid.Row="2" Width="60" Height="60" Margin="360,0,0,0" FontSize="40" HorizontalAlignment="Left" Style="{DynamicResource ButtonRounded}">&#128269;</Button>
+
+        <!--grid 1-1-->
+
+
+        <!--grid 1-2-->
+        <TextBlock Foreground="Gray" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" Margin="5,5,5,5" FontSize="20" TextWrapping="Wrap" VerticalAlignment="Bottom">
             Application made by
                 <Span FontStyle="Italic">
                     Leszczyński Konrad
-                </Span> 
+                </Span>
         </TextBlock>
-        
-        <!--grid 1-0-->
-        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,50,5" TextWrapping="Wrap" FontFamily="Lucida Console" Grid.Column="1" Grid.Row="0" RenderTransformOrigin="-0.2,1.736"/>
-        <Button Grid.Column="1" Grid.Row="0" Width="40" Height="40" Margin="0,0,5,0" HorizontalAlignment="Right">&#128269;</Button>
 
-        <!--grid 1-1-->
-           <Image />
-        
-        <!--grid 1-2-->
-        <Button Grid.Column="1" Grid.Row="2" Width="40" Height="40" HorizontalAlignment="Right" Margin="0,0,5,0" >&#10006;</Button>
-        <Button Grid.Column="1" Grid.Row="2" Width="40" Height="40" HorizontalAlignment="Right" Margin="0,0,50,0">&#x2630;</Button>
-        <Button Grid.Column="1" Grid.Row="2" Width="40" Height="40" HorizontalAlignment="Right" Margin="0,0,95,0">&#x21A9;</Button>
-        
 
 
 
@@ -60,6 +78,6 @@
         <Border Grid.Column="1" Grid.Row="1" BorderThickness="0 0 4 0" BorderBrush="LightGray"></Border>
         <Border Grid.Column="1" Grid.Row="2" BorderThickness="0 0 0 0 " BorderBrush="Purple"></Border>
         -->
-                     
+
     </Grid>
 </Window>
