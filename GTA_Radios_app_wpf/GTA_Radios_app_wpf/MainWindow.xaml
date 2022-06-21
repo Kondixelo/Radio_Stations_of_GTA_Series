@@ -43,6 +43,8 @@
                 <SolidColorBrush></SolidColorBrush>
             </Border.Background>
         </Border>
+        
+        
         <!--grid 0-2-->
         <Button Grid.Column="1" Grid.Row="2" Width="40" Height="40" Grid.ColumnSpan="2" FontSize="20" HorizontalAlignment="Center" Margin="150,0,0,0" Style="{DynamicResource ButtonRounded}" >&#10006;</Button>
         <!--back button-->                                                                     
