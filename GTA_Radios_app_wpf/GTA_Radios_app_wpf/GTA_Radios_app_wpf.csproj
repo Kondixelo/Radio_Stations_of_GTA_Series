@@ -95,5 +95,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Backgrounds\gta_back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Backgrounds\gta_back_left.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Backgrounds\gta_back_right.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
