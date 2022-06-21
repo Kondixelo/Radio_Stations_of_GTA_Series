@@ -1,0 +1,16 @@
+C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\bin\Debug\GTA_Radios_app_wpf.exe.config
+C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\bin\Debug\GTA_Radios_app_wpf.exe
+C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\bin\Debug\GTA_Radios_app_wpf.pdb
+C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\obj\Debug\GTA_Radios_app_wpf.csproj.AssemblyReference.cache
+C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\obj\Debug\MainWindow.g.cs
+C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\obj\Debug\App.g.cs
+C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\obj\Debug\GTA_Radios_app_wpf_MarkupCompile.cache
+C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\obj\Debug\GTA_Radios_app_wpf_MarkupCompile.lref
+C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\obj\Debug\MainWindow.baml
+C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\obj\Debug\GTA_Radios_app_wpf.g.resources
+C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\obj\Debug\GTA_Radios_app_wpf.Properties.Resources.resources
+C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\obj\Debug\GTA_Radios_app_wpf.csproj.GenerateResource.cache
+C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\obj\Debug\GTA_Radios_app_wpf.csproj.CoreCompileInputs.cache
+C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\obj\Debug\GTA_Radios_app_wpf.exe
+C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\obj\Debug\GTA_Radios_app_wpf.pdb
+C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\obj\Debug\App.baml
