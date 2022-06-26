@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("backgrounds/gta_back_right.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("covers/games/gta1.png")]
 
 

@@ -13,7 +13,7 @@
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="80"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -24,33 +24,35 @@
         </Grid.ColumnDefinitions>
 
         <!--grid 0-0-->
-        <TextBlock Background="#474747" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10" Padding="10,10,10,10" TextWrapping="Wrap" Foreground="PowderBlue"  FontSize="42" Style="{StaticResource CustomFont}" Text="Welcome to application &quot;Radio stations of the games of Grand Theft Auto series&quot;. Choose a game, then a station or search station or a track."  FontFamily="/GTA_Radios_app_wpf;component/Fonts/#Pricedown">
+        <TextBlock Name="InfoBox" Background="#474747" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10" Padding="10,10,10,10" TextWrapping="Wrap" Foreground="PowderBlue"  FontSize="42" Style="{StaticResource CustomFont}"  FontFamily="/GTA_Radios_app_wpf;component/Fonts/#Pricedown">
+            Welcome to application "Radio stations of the games of Grand Theft Auto series". Choose a game, then a station or search station or a track.
         </TextBlock>
+ 
         <Border Margin="-12" BorderThickness="25,25,25,25"  CornerRadius="50" Grid.Column="1" Grid.Row="0" BorderBrush="Black">
             <Border.Background>
                 <SolidColorBrush></SolidColorBrush>
             </Border.Background>
         </Border>
 
+        <!--grid 2-0/1   color: #091d3d-->
 
-        <!--grid 0-1   color: #091d3d-->
-        <ListBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10" Grid.Column="1" Grid.Row="1" Background="#474747">
-            <ListBoxItem Margin="20,20,0,0" Foreground="Cornsilk">siema
-            </ListBoxItem>
+        <ListBox SelectionMode="Single" MouseEnter="ListBoxMouseEnter" SelectionChanged="OnSelectionChanged" Name="MainList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Background="#474747" >
+            
         </ListBox>
-        <Border Margin="-12" Grid.Column="1" Grid.Row="1" BorderThickness="25,25,25,25"  CornerRadius="50" BorderBrush="Black">
+        <!--
+        <Border Margin="-12" Grid.Column="2" Grid.Row="0" BorderThickness="25,25,25,25" Grid.RowSpan="2"  CornerRadius="50" BorderBrush="Black">
             <Border.Background>
                 <SolidColorBrush></SolidColorBrush>
             </Border.Background>
         </Border>
-        
+        -->
         
         <!--grid 0-2-->
-        <Button Grid.Column="1" Grid.Row="2" Width="40" Height="40" Grid.ColumnSpan="2" FontSize="20" HorizontalAlignment="Center" Margin="150,0,0,0" Style="{DynamicResource ButtonRounded}" >&#10006;</Button>
+        <Button Name="QuitButton" Grid.Column="1" Grid.Row="2" Width="40" Height="40" Grid.ColumnSpan="2" FontSize="20" HorizontalAlignment="Center" Margin="150,0,0,0" Style="{DynamicResource ButtonRounded}" Click="QuitButtonClick" >&#10006;</Button>
         <!--back button-->                                                                     
-        <Button Grid.Column="1" Grid.Row="2" Width="40" Height="40" Grid.ColumnSpan="2" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,0" Style="{DynamicResource ButtonRounded}">&#x2630;</Button>
-        <!--Menu button-->                                                                       
-        <Button Grid.Column="1" Grid.Row="2" Width="40" Height="40" Grid.ColumnSpan="2" FontSize="20" HorizontalAlignment="Center" Margin="0,0,150,0" Style="{DynamicResource ButtonRounded}">&#x21A9;</Button>
+        <Button Name="MenuButton" Grid.Column="1" Grid.Row="2" Width="40" Height="40" Grid.ColumnSpan="2" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,0" Style="{DynamicResource ButtonRounded}" Click="MenuButtonClick">&#x2630;</Button>
+        <!--Menu button-->
+        <Button IsEnabled="False" Name="BackButton" Grid.Column="1" Grid.Row="2" Width="40" Height="40" Grid.ColumnSpan="2" FontSize="20" HorizontalAlignment="Center" Margin="0,0,150,0" Style="{DynamicResource ButtonRounded}" Click="BackButtonClick">&#x21A9;</Button>
         <!--exit button-->
 
         <!--grid 1-0-->
@@ -69,10 +71,13 @@
                  RenderTransformOrigin="-0.2,1.736" Style="{DynamicResource TextBoxType}" />
         <Button Grid.Column="1"  Grid.Row="2" Width="40" Height="40" Margin="270,0,0,0" FontSize="20" HorizontalAlignment="Left" Style="{DynamicResource ButtonRounded}">&#128269;</Button>
 
-        <!--grid 2-0/1-->
-        <TextBlock Background="#474747" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10" Padding="10,10,10,10" TextWrapping="Wrap" Foreground="#A5D58B"  FontSize="42" Style="{StaticResource CustomFont}" Text="Welcome to application &quot;Radio stations of the games of Grand Theft Auto series&quot;. Choose a game, then a station or search station or a track."  FontFamily="/GTA_Radios_app_wpf;component/Fonts/#Pricedown">
+        <!--grid 0-1   color: #091d3d-->
+        <TextBlock Name="ItemInfoBox"  Background="#474747" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10" Padding="10,10,10,10" TextWrapping="Wrap" Foreground="#A5D58B"  FontSize="42" Style="{StaticResource CustomFont}" FontFamily="/GTA_Radios_app_wpf;component/Fonts/#Pricedown">
+            <Image Name="CoverPlace">
+                <Image.Source  >Covers/Games/gta1.png</Image.Source>
+            </Image>
         </TextBlock>
-        <Border Margin="-12" BorderThickness="25,25,25,25"  CornerRadius="50" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" BorderBrush="Black">
+        <Border Margin="-12" BorderThickness="25,25,25,25"  CornerRadius="50" Grid.Column="1" Grid.Row="1"  BorderBrush="Black">
             <Border.Background>
                 <SolidColorBrush></SolidColorBrush>
             </Border.Background>
