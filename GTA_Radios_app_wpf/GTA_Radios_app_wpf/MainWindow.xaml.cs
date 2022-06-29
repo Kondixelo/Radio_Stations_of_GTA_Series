@@ -27,6 +27,7 @@ namespace GTA_Radios_app_wpf
     public partial class MainWindow : Window
     {
         private string backButtonDirection;
+        private string chosenGame;
         private int buttonGameID;
         private int buttonStationID;
         private int leftImageIndex = 2;
@@ -92,10 +93,23 @@ namespace GTA_Radios_app_wpf
             ChangeBackground();
         }
 
+        public void Search()
+        {
+            ItemInfoBox.Text = "";
+            StartItemInfoBox();
+            string searchBoxPhrase;
+            searchBoxPhrase = SearchBox.Text;
 
+            if (searchBoxPhrase != "")
+            {
+                ShowStations(0, searchBoxPhrase);
+                ShowTracks(0, searchBoxPhrase);
+            }
+        }
 
         public void ShowGames()
         {
+            StartInfoBox();
             BackButton.IsEnabled = false;
             MainList.Items.Clear();
             string query = "SELECT * FROM GTAbase.dbo.Games ";
@@ -121,31 +135,50 @@ namespace GTA_Radios_app_wpf
                     gamesObject.Plot = rdr["Plot"].ToString();
 
                     ListBoxItem itemB = new ListBoxItem();
-                    itemB.FontSize = 40;
+                    itemB.FontSize = 20;
                     itemB.Foreground = Brushes.Cornsilk;
                     itemB.Name = "GameID" + gamesObject.id.ToString(); ;
-                    itemB.Content = gamesObject.Name + "|" + gamesObject.IsDLC + "|" + gamesObject.NumberOfStations;
+                    itemB.Content = "GTA " + gamesObject.Name;
                     MainList.Items.Add(itemB);
                 }
             }
         }
 
-        void ShowStations(int gameID)
+        public void ShowStations(int gameID, string searchPhrase)
         {
-            MainList.Items.Clear();
-            ItemInfoBox.Inlines.Clear();
             backButtonDirection = "games";
             buttonGameID = gameID;
             BackButton.IsEnabled = true;
-            TextBoxGameInfo(gameID);
+            MainList.Items.Clear();
             string query = "SELECT * FROM GTAbase.dbo.Stations WHERE Game_ID = " + gameID;
             string connectionPath = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=GTAbase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            
+            if (searchPhrase != null)
+            {
+                query = "SELECT * FROM GTAbase.dbo.Stations WHERE Name LIKE '%" + searchPhrase + "%' OR Music_genre LIKE '%" + searchPhrase + "%'";
+            }
+            else
+            {
+                ItemInfoBox.Inlines.Clear();
+                TextBoxGameInfo(gameID);
+            }
+
             using (SqlConnection sql = new SqlConnection(connectionPath))
             {
                 sql.Open();
                 SqlCommand cmd = new SqlCommand(query, sql);
                 cmd.CommandType = CommandType.Text;
                 SqlDataReader rdr = cmd.ExecuteReader();
+                if (searchPhrase != null && rdr.Read())
+                {
+                    ListBoxItem headerStations = new ListBoxItem();
+                    headerStations.Content = "Stations";
+                    headerStations.HorizontalAlignment = HorizontalAlignment.Center;
+                    headerStations.FontSize = 30;
+                    headerStations.Foreground = Brushes.AntiqueWhite;
+                    headerStations.Focusable = false;
+                    MainList.Items.Add(headerStations);
+                }
                 while (rdr.Read())
                 {
                     Stations stationsObject = new Stations();
@@ -158,7 +191,7 @@ namespace GTA_Radios_app_wpf
                     stationsObject.Station_IsUserStation = Convert.ToInt32(rdr["Is_user_station"]);
 
                     ListBoxItem itemB = new ListBoxItem();
-                    itemB.FontSize = 40;
+                    itemB.FontSize = 20;
                     itemB.Foreground = Brushes.Cornsilk;
                     itemB.Name = "StationID" + stationsObject.Station_id.ToString(); ;
                     itemB.Content = stationsObject.Station_Name;
@@ -167,22 +200,40 @@ namespace GTA_Radios_app_wpf
             }
         }
 
-        void ShowTracks(int stationID)
+        void ShowTracks(int stationID, string searchPhrase)
         {
-            ItemInfoBox.Inlines.Clear();
             buttonStationID = stationID;
-            MainList.Items.Clear();
-
             backButtonDirection = "stations";
-            TextBoxStationInfo(stationID);
             string query = "SELECT * FROM GTAbase.dbo.Tracks WHERE Station_ID = " + stationID;
             string connectionPath = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=GTAbase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+            if (searchPhrase != null)
+            {
+                query = "SELECT * FROM GTAbase.dbo.Tracks WHERE Author LIKE '%" + searchPhrase + "%' OR Title LIKE '%" + searchPhrase + "%'";
+            }
+            else
+            {
+                ItemInfoBox.Inlines.Clear();
+                MainList.Items.Clear();
+                TextBoxStationInfo(stationID);
+            }
             using (SqlConnection sql = new SqlConnection(connectionPath))
             {
                 sql.Open();
                 SqlCommand cmd = new SqlCommand(query, sql);
                 cmd.CommandType = CommandType.Text;
                 SqlDataReader rdr = cmd.ExecuteReader();
+
+                if (searchPhrase != null && rdr.Read())
+                {
+                    ListBoxItem headerTracks = new ListBoxItem();
+                    headerTracks.Content = "Tracks";
+                    headerTracks.HorizontalAlignment = HorizontalAlignment.Center;
+                    headerTracks.FontSize = 30;
+                    headerTracks.Foreground = Brushes.Bisque;
+                    headerTracks.Focusable = false;
+                    MainList.Items.Add(headerTracks);
+                }
                 while (rdr.Read())
                 {
                     Tracks tracksObject = new Tracks();
@@ -193,13 +244,11 @@ namespace GTA_Radios_app_wpf
                     tracksObject.Track_order_in_station = Convert.ToInt32(rdr["Order_in_station"]);
 
                     ListBoxItem itemB = new ListBoxItem();
-                    itemB.FontSize = 40;
+                    itemB.FontSize = 20;
                     itemB.Foreground = Brushes.Cornsilk;
                     itemB.Name = "TrackID" + tracksObject.Track_id.ToString(); ;
                     itemB.Content = tracksObject.Track_author + " - " + tracksObject.Track_title;
                     MainList.Items.Add(itemB);
-
-
                 }
             }
         }
@@ -356,7 +405,6 @@ namespace GTA_Radios_app_wpf
 
         }
 
-
         void TextBoxStationInfo(int stationID)
         {
             string query = "SELECT * FROM GTAbase.dbo.Stations WHERE ID = " + stationID;
@@ -442,8 +490,6 @@ namespace GTA_Radios_app_wpf
 
         }
 
-
-
         private void ListBoxMouseEnter(object sender, MouseEventArgs e)
         {
             ListBoxItem lbi = ((sender as ListBox).SelectedItem as ListBoxItem);
@@ -454,8 +500,6 @@ namespace GTA_Radios_app_wpf
             }
         }
 
-      
-
         private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int itemID;
@@ -463,21 +507,51 @@ namespace GTA_Radios_app_wpf
             ListBox lbA = e.Source as ListBox;
             if (lbi != null)
             {
-                
                 string itemType = lbi.Name.Substring(0, 1);
                 if (itemType == "G") //game
                 {
                     lbA.Items.Clear();
                     itemID = Convert.ToInt32(lbi.Name.Substring(6, (lbi.Name.Length - 6)));
-                    ShowStations(itemID);
+                    ShowStations(itemID,null);
+                    GameInfoBox(lbi.Content.ToString());
+                    chosenGame = lbi.Content.ToString();
                 }
                 if (itemType == "S") //station
                 {
                     lbA.Items.Clear();
                     itemID = Convert.ToInt32(lbi.Name.Substring(9, (lbi.Name.Length - 9)));
-                    ShowTracks(itemID);
+                    ShowTracks(itemID, null);
+                    StationInfoBox(lbi.Content.ToString());
                 }
             }
+        }
+        private void BackButtonClick(object sender, RoutedEventArgs e)
+        {
+            ItemInfoBox.Inlines.Clear();
+            if (backButtonDirection == "games")
+            {
+                BackButton.IsEnabled = false;
+                StartInfoBox();
+                StartItemInfoBox();
+                ShowGames();
+            }
+            if (backButtonDirection == "stations")
+            {
+                GameInfoBox(chosenGame);
+                TextBoxStationInfo(buttonStationID);
+                ShowStations(buttonGameID, null);
+            }
+            if (buttonGameID == 0)
+            {
+                if (buttonStationID == 0)
+                {
+                    ShowGames();
+                }
+                else
+                {
+                    Search();
+                }
+            }  
         }
 
         private void MenuButtonClick(object sender, RoutedEventArgs e)
@@ -493,11 +567,24 @@ namespace GTA_Radios_app_wpf
         {
             Close();
         }
+        
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            Search();
+        }
 
-
-        void StartInfoBox()
+        public void StartInfoBox()
         {
             InfoBox.Text = "Welcome to application \"Radio stations of the games of Grand Theft Auto series\". Choose a game, then a station or search station or a track.";
+        }
+        public void GameInfoBox(string game)
+        {
+            InfoBox.Text = "List of radio stations in " + game;
+        }
+
+        public void StationInfoBox(string station)
+        {
+            InfoBox.Text = "List of tracks in " + station + " station";
         }
         void StartItemInfoBox()
         {
@@ -506,22 +593,6 @@ namespace GTA_Radios_app_wpf
             AltText.Visibility = Visibility.Hidden;
         }
 
-
-        private void BackButtonClick(object sender, RoutedEventArgs e)
-        {
-            ItemInfoBox.Inlines.Clear();
-            if (backButtonDirection == "games")
-            {
-                BackButton.IsEnabled = false;
-                StartInfoBox();
-                StartItemInfoBox();
-                ShowGames();
-            }
-            if (backButtonDirection == "stations")
-            {
-                TextBoxStationInfo(buttonStationID);
-                ShowStations(buttonGameID);
-            }
-        }
+      
     } 
 }
