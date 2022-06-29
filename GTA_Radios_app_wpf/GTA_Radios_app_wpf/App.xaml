@@ -4,6 +4,20 @@
              xmlns:local="clr-namespace:GTA_Radios_app_wpf"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+
+        <Storyboard x:Key="AnimateTarget" RepeatBehavior="Forever">
+
+            <DoubleAnimation BeginTime="0:0:0" Duration="0:0:0" Storyboard.TargetProperty="(ImageBrush.Opacity)" Storyboard.TargetName="RightImageBorder"  From="1.0" To="0.0" RepeatBehavior="Forever" AutoReverse="True" />
+         
+
+        </Storyboard>
+        <Storyboard x:Key="AnimateTarget2" RepeatBehavior="Forever">
+
+            
+            <DoubleAnimation BeginTime="0:0:0" Duration="0:0:0" Storyboard.TargetProperty="(ImageBrush.Opacity)" Storyboard.TargetName="LeftImageBorder"  From="1.0" To="0.0" RepeatBehavior="Forever" AutoReverse="True" />
+
+        </Storyboard>
+
         <Style x:Key="CustomFont">
             <Setter Property="TextElement.FontFamily" Value="Fonts/pricedow.ttf"/>
         </Style>

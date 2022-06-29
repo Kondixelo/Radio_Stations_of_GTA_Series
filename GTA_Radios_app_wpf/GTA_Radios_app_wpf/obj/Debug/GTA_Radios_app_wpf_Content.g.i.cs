@@ -8,6 +8,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("covers/games/gta1.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("covers/games/gta_1.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("covers/games/gta_iii.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("covers/games/gta_iv.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("covers/games/gta_sa.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("covers/games/gta_v.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("covers/games/gta_vc.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("covers/games/gta_vcs.png")]
 
 

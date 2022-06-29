@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:GTA_Radios_app_wpf"
         mc:Ignorable="d"
         Title="Radio stations of the games of Grand Theft Auto series"  MinHeight="960" MinWidth="1280" Height="1080" Width="1920">
-
+        
     <Grid>
+
         <Grid.Background >
             <SolidColorBrush Color="Black" />
         </Grid.Background>
@@ -72,27 +73,32 @@
         <Button Grid.Column="1"  Grid.Row="2" Width="40" Height="40" Margin="270,0,0,0" FontSize="20" HorizontalAlignment="Left" Style="{DynamicResource ButtonRounded}">&#128269;</Button>
 
         <!--grid 0-1   color: #091d3d-->
-        <TextBlock Name="ItemInfoBox"  Background="#474747" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10" Padding="10,10,10,10" TextWrapping="Wrap" Foreground="#A5D58B"  FontSize="42" Style="{StaticResource CustomFont}" FontFamily="/GTA_Radios_app_wpf;component/Fonts/#Pricedown">
-            <Image Name="CoverPlace">
-                <Image.Source  >Covers/Games/gta1.png</Image.Source>
+        <StackPanel  Margin="10,10,10,10"  Background="#474747" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Image Name="CoverPlace"  Source="Covers/Games/mainlogo.png" Height="300" Width="400" HorizontalAlignment="Center">
             </Image>
-        </TextBlock>
+            <TextBlock Name="ItemInfoBox" TextWrapping="Wrap" FontSize="42" Style="{StaticResource CustomFont}" FontFamily="/GTA_Radios_app_wpf;component/Fonts/#Pricedown">
+            </TextBlock>
+        </StackPanel>
+        
         <Border Margin="-12" BorderThickness="25,25,25,25"  CornerRadius="50" Grid.Column="1" Grid.Row="1"  BorderBrush="Black">
             <Border.Background>
                 <SolidColorBrush></SolidColorBrush>
             </Border.Background>
+            <Image/>
         </Border>
         
         <!--grid 0-0/2-->
 
-        <Border   Grid.Column="0"  Grid.Row="0" Grid.RowSpan="3" BorderThickness="15,15,10,15" CornerRadius="40">
+        <Border Name="LeftImageBorder"  Grid.Column="0"  Grid.Row="0" Grid.RowSpan="3" BorderThickness="15,15,10,15" CornerRadius="40">
             <Border.Background>
-                <ImageBrush ImageSource="Backgrounds/gta_back_left.jpg" ></ImageBrush>
+                <ImageBrush x:Name="LefttImageBrush"  ></ImageBrush>
             </Border.Background>
+            <ItemsControl  />
         </Border>
-        <Border   Grid.Column="3"  Grid.Row="0" Grid.RowSpan="3" BorderThickness="10,15,15,15" CornerRadius="40">
+        <Border Name="RightImageBorder" Grid.Column="3"  Grid.Row="0" Grid.RowSpan="3" BorderThickness="10,15,15,15" CornerRadius="40">
             <Border.Background>
-                <ImageBrush ImageSource="Backgrounds/gta_back_right.jpg" ></ImageBrush>
+                <ImageBrush x:Name="RightImageBrush" ImageSource="Backgrounds\gta2.png" >
+                </ImageBrush>
             </Border.Background>
         </Border>
         

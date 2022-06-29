@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,9 +13,11 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace GTA_Radios_app_wpf
 {
@@ -25,13 +29,69 @@ namespace GTA_Radios_app_wpf
         private string backButtonDirection;
         private int buttonGameID;
         private int buttonStationID;
+        private int leftImageIndex = 2;
+        private int rightImageIndex = 1;
         public MainWindow()
         {
             InitializeComponent();
             StartInfoBox();
             StartItemInfoBox();
             ShowGames();
+            ChangeBackground();
+            OpacityEffect();
         }
+
+        private void OpacityEffect()
+        {
+            DispatcherTimer opacityTimer = new DispatcherTimer();
+            opacityTimer.Interval = TimeSpan.FromSeconds(16);
+            opacityTimer.Tick += OpacityImage_Ticker;
+            opacityTimer.Start();
+        }
+
+        private void OpacityImage_Ticker(object sender, EventArgs e)
+        {
+            BlinkingImage(RightImageBorder, 2000);
+            BlinkingImage(LeftImageBorder, 2000);
+        }
+        public void BlinkingImage(Border image, int lenght)
+        {
+            DoubleAnimation opacityAnim = new DoubleAnimation
+            {
+                From = 1.0,
+                To = 0.0,
+                Duration = new Duration(TimeSpan.FromMilliseconds(lenght)),
+                AutoReverse = true
+            };
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(opacityAnim);
+            Storyboard.SetTarget(opacityAnim, image);
+            Storyboard.SetTargetProperty(opacityAnim, new PropertyPath("Opacity"));
+            storyboard.Begin(image);
+            IncludeDelay();
+        }
+
+        public void ChangeBackground()
+        {
+            Random r = new Random();
+            rightImageIndex = r.Next(1, 27);
+            leftImageIndex = r.Next(1, 27);
+            while (leftImageIndex == rightImageIndex)
+            {
+                leftImageIndex = r.Next(1, 27);
+            }
+            var filenameRight = @"C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\Backgrounds\gta" + rightImageIndex + ".png";
+            //var filenameLeft = @"pack://application:,,,/GTA_Radios_app_wpf;GTA_Radios_app_wpf\Backgrounds\gta" + leftImageIndex + ".png";
+            var filenameLeft = @"C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\Backgrounds\gta"  + leftImageIndex + ".png";
+            RightImageBrush.ImageSource = new BitmapImage(new Uri(filenameRight, UriKind.Absolute));
+            LefttImageBrush.ImageSource = new BitmapImage(new Uri(filenameLeft, UriKind.Absolute));
+        }
+        public async void IncludeDelay()
+        {
+            await Task.Delay(2000);
+            ChangeBackground();
+        }
+
 
 
         public void ShowGames()
@@ -164,7 +224,21 @@ namespace GTA_Radios_app_wpf
                     gamesObject.NumberOfStations = Convert.ToInt32(rdr["Number_of_stations"]);
                     gamesObject.Plot = rdr["Plot"].ToString();
                     gamesObject.Cover = rdr["Cover"].ToString();
-                    ItemInfoBox.Text = "Tytuł: Grand Theft Auto " + gamesObject.Name;
+
+                    Run runTitle = new Run("Title: Grand Theft Auto " + gamesObject.Name);
+                    /*
+                    ItemInfoBox.Text = "Title: Grand Theft Auto " + gamesObject.Name + 
+                        "\n Release: " + gamesObject.DateRelease.ToString("dd-M-yyyy") + 
+                        "\n Timeline: " + gamesObject.TimeOfAction +
+                        "\n DLCs: " +gamesObject.NumberOfDLC +
+                        "\n Stations: " + gamesObject.NumberOfStations+
+                        "\n Plot: " + gamesObject.Plot;
+
+                    */
+
+                    ItemInfoBox.Inlines.Add(runTitle);
+                    var CoverImage = @"C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\Covers\Games\" + gamesObject.Cover;
+                    CoverPlace.Source = new BitmapImage(new Uri(CoverImage, UriKind.Absolute));
                 }
 
             }
@@ -192,6 +266,7 @@ namespace GTA_Radios_app_wpf
                     stationsObject.Station_MusicGenre = rdr["Music_genre"].ToString();
                     stationsObject.Station_NumberOfTracks = Convert.ToInt32(rdr["Number_of_tracks"]);
                     stationsObject.Station_IsUserStation = Convert.ToInt32(rdr["Is_user_station"]);
+                    ItemInfoBox.Text = "";
                     ItemInfoBox.Text = "Nazwa stacji: " + stationsObject.Station_Name;
                 }
             }
@@ -256,7 +331,9 @@ namespace GTA_Radios_app_wpf
         }
         void StartItemInfoBox()
         {
-            ItemInfoBox.Text = "logo GTA";
+            ItemInfoBox.Text = "";
+            var CoverImage = @"C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\Covers\Games\mainlogo.png";
+            CoverPlace.Source = new BitmapImage(new Uri(CoverImage, UriKind.Absolute));
         }
 
 
