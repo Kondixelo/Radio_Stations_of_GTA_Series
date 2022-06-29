@@ -11,9 +11,10 @@ namespace GTA_Radios_app_wpf
         public int Station_id { get; set; }
         public string Station_Name { get; set; }
         public int Station_GameID { get; set; }
-        public int Station_OrderInStation { get; set; }
+        public int Station_OrderInGame { get; set; }
         public string Station_MusicGenre { get; set; }
         public int Station_NumberOfTracks { get; set; }
         public int Station_IsUserStation { get; set; }
+        public string Station_Cover { get; set; }
     }
 }

@@ -125,7 +125,6 @@ namespace GTA_Radios_app_wpf
                     itemB.Foreground = Brushes.Cornsilk;
                     itemB.Name = "GameID" + gamesObject.id.ToString(); ;
                     itemB.Content = gamesObject.Name + "|" + gamesObject.IsDLC + "|" + gamesObject.NumberOfStations;
-
                     MainList.Items.Add(itemB);
                 }
             }
@@ -134,6 +133,7 @@ namespace GTA_Radios_app_wpf
         void ShowStations(int gameID)
         {
             MainList.Items.Clear();
+            ItemInfoBox.Inlines.Clear();
             backButtonDirection = "games";
             buttonGameID = gameID;
             BackButton.IsEnabled = true;
@@ -152,7 +152,7 @@ namespace GTA_Radios_app_wpf
                     stationsObject.Station_id = Convert.ToInt32(rdr["ID"]);
                     stationsObject.Station_Name = rdr["Name"].ToString();
                     stationsObject.Station_GameID = Convert.ToInt32(rdr["Game_ID"]);
-                    stationsObject.Station_OrderInStation = Convert.ToInt32(rdr["Order_in_station"]);
+                    stationsObject.Station_OrderInGame = Convert.ToInt32(rdr["Order_in_game"]);
                     stationsObject.Station_MusicGenre = rdr["Music_genre"].ToString();
                     stationsObject.Station_NumberOfTracks = Convert.ToInt32(rdr["Number_of_tracks"]);
                     stationsObject.Station_IsUserStation = Convert.ToInt32(rdr["Is_user_station"]);
@@ -169,8 +169,10 @@ namespace GTA_Radios_app_wpf
 
         void ShowTracks(int stationID)
         {
+            ItemInfoBox.Inlines.Clear();
             buttonStationID = stationID;
             MainList.Items.Clear();
+
             backButtonDirection = "stations";
             TextBoxStationInfo(stationID);
             string query = "SELECT * FROM GTAbase.dbo.Tracks WHERE Station_ID = " + stationID;
@@ -225,20 +227,129 @@ namespace GTA_Radios_app_wpf
                     gamesObject.Plot = rdr["Plot"].ToString();
                     gamesObject.Cover = rdr["Cover"].ToString();
 
-                    Run runTitle = new Run("Title: Grand Theft Auto " + gamesObject.Name);
-                    /*
-                    ItemInfoBox.Text = "Title: Grand Theft Auto " + gamesObject.Name + 
-                        "\n Release: " + gamesObject.DateRelease.ToString("dd-M-yyyy") + 
-                        "\n Timeline: " + gamesObject.TimeOfAction +
-                        "\n DLCs: " +gamesObject.NumberOfDLC +
-                        "\n Stations: " + gamesObject.NumberOfStations+
-                        "\n Plot: " + gamesObject.Plot;
+                    //title
+                    Run run = new Run("Title: ");
+                    run.Foreground = Brushes.LightSteelBlue;
+                    ItemInfoBox.Inlines.Add(run);
+                    run = new Run(gamesObject.Name + "\r\n");
+                    run.Foreground = Brushes.LightYellow;
+                    ItemInfoBox.Inlines.Add(run);
 
-                    */
+                    //release
+                    run = new Run("Release: ");
+                    run.Foreground = Brushes.LightSteelBlue;
+                    ItemInfoBox.Inlines.Add(run);
+                    run = new Run(gamesObject.DateRelease.ToString("dd-M-yyyy") + "\r\n");
+                    run.Foreground = Brushes.LightYellow;
+                    ItemInfoBox.Inlines.Add(run);
 
-                    ItemInfoBox.Inlines.Add(runTitle);
-                    var CoverImage = @"C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\Covers\Games\" + gamesObject.Cover;
-                    CoverPlace.Source = new BitmapImage(new Uri(CoverImage, UriKind.Absolute));
+                    //Timeline
+                    run = new Run("Timeline: ");
+                    run.Foreground = Brushes.LightSteelBlue;
+                    ItemInfoBox.Inlines.Add(run);
+                    run = new Run(gamesObject.TimeOfAction + "\r\n");
+                    run.Foreground = Brushes.LightYellow;
+                    ItemInfoBox.Inlines.Add(run);
+
+                    //isDLC
+                    if (gamesObject.IsDLC != 0)
+                    {
+                        string query2 = "SELECT * FROM GTAbase.dbo.Games WHERE ID=" + gamesObject.IsDLC;
+                        string connectionPath2 = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=GTAbase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                        using (SqlConnection sql2 = new SqlConnection(connectionPath2))
+                        {
+                            sql.Open();
+                            SqlCommand cmd2 = new SqlCommand(query, sql);
+                            cmd.CommandType = CommandType.Text;
+                            SqlDataReader rdr2 = cmd.ExecuteReader();
+
+                            run = new Run("DLCs:");
+                            run.Foreground = Brushes.LightSteelBlue;
+                            ItemInfoBox.Inlines.Add(run);
+                            run = new Run(" This game is DLC for:");
+                            run.Foreground = Brushes.LightYellow;
+                            ItemInfoBox.Inlines.Add(run);
+
+                            while (rdr2.Read())
+                            {
+                                Games MainGame = new Games();
+                                MainGame.Name = rdr2["Name"].ToString();
+                                run = new Run(" " + MainGame.Name); //<------------------dokonczyc, odwolac sie do bazy games i wypisac gre do ktorej nalezy to dlc
+                                run.Foreground = Brushes.LightYellow;
+                                ItemInfoBox.Inlines.Add(run);
+                            }
+
+                        }
+                    }
+
+                    //DLCs
+                    if (gamesObject.NumberOfDLC == 0)
+                    {
+                        run = new Run("DLCs: ");
+                        run.Foreground = Brushes.LightSteelBlue;
+                        ItemInfoBox.Inlines.Add(run);
+                        run = new Run(gamesObject.NumberOfDLC.ToString() + "\r\n");
+                        run.Foreground = Brushes.LightYellow;
+                        ItemInfoBox.Inlines.Add(run);
+                    }
+                    else
+                    {
+                            string query3= "SELECT * FROM GTAbase.dbo.Games WHERE Is_DLC=" + gameID;
+                            string connectionPath3 = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=GTAbase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                        using (SqlConnection sql3 = new SqlConnection(connectionPath3))
+                        {
+                            sql3.Open();
+                            SqlCommand cmd3 = new SqlCommand(query3, sql3);
+                            cmd.CommandType = CommandType.Text;
+                            SqlDataReader rdr3 = cmd.ExecuteReader();
+
+                            run = new Run("DLCs:");
+                            run.Foreground = Brushes.LightSteelBlue;
+                            ItemInfoBox.Inlines.Add(run);
+                            run = new Run(" " + gamesObject.NumberOfDLC.ToString() + ":");
+                            run.Foreground = Brushes.LightYellow;
+                            ItemInfoBox.Inlines.Add(run);
+
+                            while (rdr3.Read())
+                            {
+                                Games DLCs = new Games();
+                                DLCs.Name = rdr3["Name"].ToString();
+                                run = new Run(" " + DLCs.Name);
+                                run.Foreground = Brushes.LightYellow;
+                                ItemInfoBox.Inlines.Add(run);
+                            }
+                        }
+                    }
+
+                    //Stations
+                    run = new Run("Stations: ");
+                    run.Foreground = Brushes.LightSteelBlue;
+                    ItemInfoBox.Inlines.Add(run);
+                    run = new Run(gamesObject.NumberOfStations.ToString() + "\r\n");
+                    run.Foreground = Brushes.LightYellow;
+                    ItemInfoBox.Inlines.Add(run);
+
+                    //Plot
+                    run = new Run("Plot: ");
+                    run.Foreground = Brushes.LightSteelBlue;
+                    ItemInfoBox.Inlines.Add(run);
+                    run = new Run(gamesObject.Plot + "\r\n");
+                    run.Foreground = Brushes.LightYellow;
+                    ItemInfoBox.Inlines.Add(run);
+
+                    //Cover
+                    try
+                    {
+                        var CoverImage = @"C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\Covers\Games\" + gamesObject.Cover;
+                        CoverPlace.Source = new BitmapImage(new Uri(CoverImage, UriKind.Absolute));
+                        AltText.Visibility = Visibility.Hidden;
+                    }
+                    catch
+                    {
+                        CoverPlace.Source = null;
+                        AltText.Visibility = Visibility.Visible;
+                    }
+                    
                 }
 
             }
@@ -262,12 +373,70 @@ namespace GTA_Radios_app_wpf
                     stationsObject.Station_id = Convert.ToInt32(rdr["ID"]);
                     stationsObject.Station_Name = rdr["Name"].ToString();
                     stationsObject.Station_GameID = Convert.ToInt32(rdr["Game_ID"]);
-                    stationsObject.Station_OrderInStation = Convert.ToInt32(rdr["Order_in_station"]);
+                    stationsObject.Station_OrderInGame = Convert.ToInt32(rdr["Order_in_game"]);
                     stationsObject.Station_MusicGenre = rdr["Music_genre"].ToString();
                     stationsObject.Station_NumberOfTracks = Convert.ToInt32(rdr["Number_of_tracks"]);
                     stationsObject.Station_IsUserStation = Convert.ToInt32(rdr["Is_user_station"]);
-                    ItemInfoBox.Text = "";
-                    ItemInfoBox.Text = "Nazwa stacji: " + stationsObject.Station_Name;
+                    stationsObject.Station_Cover = rdr["Cover"].ToString();
+                    try
+                    {
+                        var CoverImage = @"C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\Covers\Stations\" + stationsObject.Station_Cover;
+                        CoverPlace.Source = new BitmapImage(new Uri(CoverImage, UriKind.Absolute));
+                        AltText.Visibility = Visibility.Hidden;
+                    }
+                    catch
+                    {
+                        CoverPlace.Source = null;
+                        AltText.Visibility = Visibility.Visible;
+                    }
+                    ItemInfoBox.Inlines.Clear();
+
+
+                    //Name
+                    Run run = new Run("Name: ");
+                    run.Foreground = Brushes.LightSteelBlue;
+                    ItemInfoBox.Inlines.Add(run);
+                    run = new Run(stationsObject.Station_Name + "\r\n");
+                    run.Foreground = Brushes.LightYellow;
+                    ItemInfoBox.Inlines.Add(run);
+
+                    //Order in game
+                    run = new Run("Order in game: ");
+                    run.Foreground = Brushes.LightSteelBlue;
+                    ItemInfoBox.Inlines.Add(run);
+                    run = new Run(stationsObject.Station_OrderInGame + "\r\n");
+                    run.Foreground = Brushes.LightYellow;
+                    ItemInfoBox.Inlines.Add(run);
+                    
+                    if (stationsObject.Station_IsUserStation == 1)
+                    {
+                        //
+                        run = new Run("Custom radio station: ");
+                        run.Foreground = Brushes.LightSteelBlue;
+                        ItemInfoBox.Inlines.Add(run);
+                        run = new Run("Allows players to play their songs" + "\r\n");
+                        run.Foreground = Brushes.LightYellow;
+                        ItemInfoBox.Inlines.Add(run);
+
+                    }
+                    else
+                    {
+                        //Music genre
+                        run = new Run("Genre: ");
+                        run.Foreground = Brushes.LightSteelBlue;
+                        ItemInfoBox.Inlines.Add(run);
+                        run = new Run(stationsObject.Station_MusicGenre + "\r\n");
+                        run.Foreground = Brushes.LightYellow;
+                        ItemInfoBox.Inlines.Add(run);
+
+                        //Tracks
+                        run = new Run("Number of tracks: ");
+                        run.Foreground = Brushes.LightSteelBlue;
+                        ItemInfoBox.Inlines.Add(run);
+                        run = new Run(stationsObject.Station_NumberOfTracks + "\r\n");
+                        run.Foreground = Brushes.LightYellow;
+                        ItemInfoBox.Inlines.Add(run);
+                    }
                 }
             }
 
@@ -313,6 +482,7 @@ namespace GTA_Radios_app_wpf
 
         private void MenuButtonClick(object sender, RoutedEventArgs e)
         {
+            ItemInfoBox.Inlines.Clear();
             BackButton.IsEnabled = false;
             StartInfoBox();
             StartItemInfoBox();
@@ -331,14 +501,15 @@ namespace GTA_Radios_app_wpf
         }
         void StartItemInfoBox()
         {
-            ItemInfoBox.Text = "";
             var CoverImage = @"C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\Covers\Games\mainlogo.png";
             CoverPlace.Source = new BitmapImage(new Uri(CoverImage, UriKind.Absolute));
+            AltText.Visibility = Visibility.Hidden;
         }
 
 
         private void BackButtonClick(object sender, RoutedEventArgs e)
         {
+            ItemInfoBox.Inlines.Clear();
             if (backButtonDirection == "games")
             {
                 BackButton.IsEnabled = false;
@@ -352,6 +523,5 @@ namespace GTA_Radios_app_wpf
                 ShowStations(buttonGameID);
             }
         }
-    }
-
+    } 
 }

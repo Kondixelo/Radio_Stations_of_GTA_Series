@@ -28,13 +28,14 @@
         <TextBlock Name="InfoBox" Background="#474747" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10" Padding="10,10,10,10" TextWrapping="Wrap" Foreground="PowderBlue"  FontSize="42" Style="{StaticResource CustomFont}"  FontFamily="/GTA_Radios_app_wpf;component/Fonts/#Pricedown">
             Welcome to application "Radio stations of the games of Grand Theft Auto series". Choose a game, then a station or search station or a track.
         </TextBlock>
- 
+
+        <!--
         <Border Margin="-12" BorderThickness="25,25,25,25"  CornerRadius="50" Grid.Column="1" Grid.Row="0" BorderBrush="Black">
             <Border.Background>
                 <SolidColorBrush></SolidColorBrush>
             </Border.Background>
         </Border>
-
+        -->
         <!--grid 2-0/1   color: #091d3d-->
 
         <ListBox SelectionMode="Single" MouseEnter="ListBoxMouseEnter" SelectionChanged="OnSelectionChanged" Name="MainList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Background="#474747" >
@@ -73,20 +74,31 @@
         <Button Grid.Column="1"  Grid.Row="2" Width="40" Height="40" Margin="270,0,0,0" FontSize="20" HorizontalAlignment="Left" Style="{DynamicResource ButtonRounded}">&#128269;</Button>
 
         <!--grid 0-1   color: #091d3d-->
-        <StackPanel  Margin="10,10,10,10"  Background="#474747" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Image Name="CoverPlace"  Source="Covers/Games/mainlogo.png" Height="300" Width="400" HorizontalAlignment="Center">
-            </Image>
-            <TextBlock Name="ItemInfoBox" TextWrapping="Wrap" FontSize="42" Style="{StaticResource CustomFont}" FontFamily="/GTA_Radios_app_wpf;component/Fonts/#Pricedown">
-            </TextBlock>
-        </StackPanel>
-        
+
+        <ScrollViewer CanContentScroll="True" Margin="10,10,10,10"  Background="#474747"   HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Column="1" Grid.Row="1" VerticalScrollBarVisibility="auto" HorizontalScrollBarVisibility="Disabled">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Visibility="Hidden"  Grid.Column="0" Name="AltText" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Center" Text="NO IMAGE" FontSize="42" Style="{StaticResource CustomFont}" FontFamily="/GTA_Radios_app_wpf;component/Fonts/#Pricedown"></TextBlock>
+                <Image Grid.Row="0" Grid.Column="0" Name="CoverPlace"  Source="Covers/Games/mainlogo.png" Height="300" Width="400" HorizontalAlignment="Center"></Image>
+                <TextBlock Grid.Row="1" Grid.Column="0"  Width="auto" Margin="10,10,10,10" Name="ItemInfoBox" TextWrapping="Wrap" FontSize="42" Style="{StaticResource CustomFont}" FontFamily="/GTA_Radios_app_wpf;component/Fonts/#Pricedown"></TextBlock>
+            </Grid>
+        </ScrollViewer>
+
+        <!--
         <Border Margin="-12" BorderThickness="25,25,25,25"  CornerRadius="50" Grid.Column="1" Grid.Row="1"  BorderBrush="Black">
             <Border.Background>
                 <SolidColorBrush></SolidColorBrush>
             </Border.Background>
             <Image/>
         </Border>
-        
+        -->
         <!--grid 0-0/2-->
 
         <Border Name="LeftImageBorder"  Grid.Column="0"  Grid.Row="0" Grid.RowSpan="3" BorderThickness="15,15,10,15" CornerRadius="40">
