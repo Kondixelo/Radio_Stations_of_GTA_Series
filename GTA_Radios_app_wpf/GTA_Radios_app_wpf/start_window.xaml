@@ -1,0 +1,18 @@
+﻿<Window x:Class="GTA_Radios_app_wpf.start_window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GTA_Radios_app_wpf"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="NoResize"
+        Background="{x:Null}"
+        WindowStartupLocation="CenterScreen"
+        Icon="Covers/Basics/app_icon.ico"
+        Title="GTA R&amp;T" Height="400" Width="400">
+    <Grid>
+        <Image Source="Covers\Basics\app_logo.png" ></Image>
+    </Grid>
+</Window>

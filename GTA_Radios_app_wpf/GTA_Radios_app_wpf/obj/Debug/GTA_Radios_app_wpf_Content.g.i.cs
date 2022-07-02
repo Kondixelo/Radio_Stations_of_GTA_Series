@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("covers/games/gta_2.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sounds/menu_down.wav")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sounds/menu_entermouse.wav")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sounds/menu_up.wav")]
 
 
