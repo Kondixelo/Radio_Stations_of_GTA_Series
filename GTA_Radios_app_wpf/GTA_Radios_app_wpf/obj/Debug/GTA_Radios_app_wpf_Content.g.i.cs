@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/data_set.mdf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/data_set_log.ldf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sounds/menu_down.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sounds/menu_entermouse.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sounds/menu_up.wav")]

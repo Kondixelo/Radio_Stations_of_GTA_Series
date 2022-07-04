@@ -1,0 +1,5 @@
+C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\obj\Release\GTA_Radios_app_wpf.csproj.AssemblyReference.cache
+C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\obj\Release\GTA_Radios_app_wpf.csproj.SuggestedBindingRedirects.cache
+C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\obj\Release\GTA_Radios_app_wpf.Properties.Resources.resources
+C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\obj\Release\GTA_Radios_app_wpf.csproj.GenerateResource.cache
+C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\obj\Release\GTA_Radios_app_wpf.csproj.CoreCompileInputs.cache
