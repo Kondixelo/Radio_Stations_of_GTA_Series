@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="GTA_Radios_app_wpf.exe" version="1.0.2.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="GTA_Radios_app_wpf.exe" version="1.0.3.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="app_icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GTA_Radios_app_wpf.exe" size="31803880">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GTA_Radios_app_wpf.exe" size="325608">
       <assemblyIdentity name="GTA_Radios_app_wpf" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>nnbxbfrADnXnZ7GiB7bUMHr3W496Eo++3ZEKZ2IQBQQ=</dsig:DigestValue>
+        <dsig:DigestValue>l14W4HI8uegULD3+0/d72BBNiKDeALkbvW3WeVU33FE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -603,22 +603,364 @@
       <dsig:DigestValue>GKzmBGx44jolBP5+7IfkvM2Mm4WEDJ3R5oBpfo0r/hU=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="data\data_set.mdf" size="8388608" writeableType="applicationData">
+  <file name="Backgrounds\gta1.png" size="2600686">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>zQ9GN1Yngl+AiOxIn6JQRLcHrD598qNCZ2b3yaOywwc=</dsig:DigestValue>
+      <dsig:DigestValue>w2ex1ltWDQqsg8I5xRsjpqowHwubsEtEKmNyrtrdH7I=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="data\data_set_log.ldf" size="8388608" writeableType="applicationData">
+  <file name="Backgrounds\gta10.png" size="545973">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>EWwh4ai5jw2xL5BdaomSCAWJjPX5dCXjYC9k8buEmE8=</dsig:DigestValue>
+      <dsig:DigestValue>NLJ5TxKliIrR7LxRo5tg7ZrNsdGAkJQy3xLFvAsyojs=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta11.png" size="2443077">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>P6K4ybPCCgnFLqezdjwY7/EhLL79GHMMaVzm4rez3Lk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta12.png" size="1887498">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>dbPLCkvTYrRsYzmZbdTQiY1hZf6MCYAXaPw+QCsGfZ8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta13.png" size="2838383">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>iHzH7Q8JIloDrDVF2nFJ9qs1HM6F4Ky5QwTXZ3lxMrM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta14.png" size="904482">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>HprZwPQlvtSn5mbQlLPeQthFe8bPbi5wfcWtAqf8oBI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta15.png" size="2043145">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>6kUgjE4wvEs9Yy4Yq+5fmFFOgb8Wfy6sFFOSr66flxo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta16.png" size="736699">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>IsJRCmLrbHRGuKsjesMIHtAbRB+C96aLizKRzdjJ1Qw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta17.png" size="737809">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>7mZXmoXMnBzGJX2EGANVgLvhBXvNugEhrVHN6/9Q/bk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta18.png" size="189481">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>LtnHK6jqHDbk2daLrDIbnhOXhwOYffoNB+t+P0yfinw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta19.png" size="298318">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>KUTqWYAK4loX1tLpt2UKWjMa4JDxb6lDiVhG2W7Th0Q=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta2.png" size="349881">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>nEja0iq8BYUJ1eTzzIcpnvW1+Vye2RWZelTVcVp4JZ4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta20.png" size="579674">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>Z4ZYr4vdb+L9RUW0Qsc+krQhyy65hAwgaqIXMEhkXQo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta21.png" size="506826">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>HeSGE0zBqoVlajJ/ix1fE18qZmhcnrJU7bGengPoM5Y=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta22.png" size="211317">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>h6s5FMkbbRiQ5rlmR3MM7DY96CAPyg7o9an2hX5HhjY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta23.png" size="428361">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>rOioRcJQs/zVyobX/caiD3bCVDxzDlSXvYV5w7daGxg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta24.png" size="863260">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SfaYwfMKMTUdsm82AbchlfoM8YU4nD9zi8ts6gjv98k=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta25.png" size="581872">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>k+6z76b9N6AnxLhRqWnuiQg9Alovi9aU3CNK0zJvR+E=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta26.png" size="3048839">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fI0BEG1vB1f8ChHS5NCu2YEMjyw7d6CjSsPkqZljM00=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta27.png" size="3163486">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>LFx1oPrU/UeS2pOrVGyFw/9aozWY/MOrUkXu2hEAX/U=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta3.png" size="1216948">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>UjdwMVsIU/tGp/Cy8L9fj3B1clCvMWItkl3Xos9F68c=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta4.png" size="738051">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>VIgP4csY7lGeFhaSmPUhrC6FRRgJ4oSuMpRpho/FnUw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta5.png" size="429589">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>yRP3oy/TXXkRC50gtUyubmgDjp/N91WMmJHoRkE1wfc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta6.png" size="860372">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>wmxWSficelF8wXKOrJ40iNOFd/fa6n8GKemCgNZcdOg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta7.png" size="464892">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>vCLM834gpc8RPFmv4FD+WEDPuke8z8DA8SF7WNZmRTM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta8.png" size="1113330">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>jA3RSCyu7gpki+e1FLb/Sfb4JzoKdex/sSEkUxqMaYU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Backgrounds\gta9.png" size="645135">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>YRh79T1c8Bi4IpT/rQE6ecN54jONQCJACT4zHg6y0vg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Covers\Basics\app_icon.ico" size="121337">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>GKzmBGx44jolBP5+7IfkvM2Mm4WEDJ3R5oBpfo0r/hU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Covers\Basics\app_logo.png" size="121114">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>n99DCBpfotUuK9K40uMvXLgzltmlO3EwcntmdrlPtZY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Covers\Basics\mainlogo.png" size="34544">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>d+QUtZUiFlJtPLalK/P5Lvdcd38N5YzvgI7w0aBnRpA=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Covers\Games\gta_1.png" size="57771">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>hfJ7YsV0VFkmyj+uHCi+fTu7hlpHHWoI5oK2vrhGGE0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Covers\Games\gta_2.png" size="43715">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>sL9QOwjSz+3afEj0TBvjRemAJnPOl1EvzRAmkPZhMu4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Covers\Games\gta_iii.png" size="35493">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>C2Cnn940s90SBr9Ys4cVphqhwBlWoUc6LEIkTJrG4U4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Covers\Games\gta_iv.png" size="123266">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>QisLfzR05Rgfosb/QmfWnt2C5iHaBbu4gLnQIgjDA6E=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Covers\Games\gta_sa.png" size="193279">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>XfTGeQtQPZAW5qBzii4rK6wWy9+U/0QDmCbZBpkDVFc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Covers\Games\gta_v.png" size="188410">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>FacbVHlYxllu5JpAuGyInFUPlr1dYTRoGDudWZn6JLI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Covers\Games\gta_vc.png" size="67911">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>hAjI2ye5DoAVnRvtbrElV4/5KN2wxixeWkyErHl9ThI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Covers\Games\gta_vcs.png" size="62154">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>eDWP4ke32g7bQ1VrCvPj/AhLFa95POyyYNu3QFT/82g=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="data\GTA_base.mdf" size="8388608" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>E0wnvugnfRcfjwoueEqVFx7YsBkUXiBPF2Y25xzvAc4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="data\GTA_base_log.ldf" size="8388608" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>tMvBLU2zassVHpSEUBd3KPMiJr9/hnEPv1YAwYUEsNg=</dsig:DigestValue>
     </hash>
   </file>
   <file name="GTA_Radios_app_wpf.exe.config" size="4112">

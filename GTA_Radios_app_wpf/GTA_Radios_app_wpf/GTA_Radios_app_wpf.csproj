@@ -15,8 +15,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>2</ApplicationRevision>
-    <ApplicationVersion>1.0.2.%2a</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.3.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -263,95 +263,95 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Backgrounds\gta1.png">
+    <Content Include="Backgrounds\gta1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Backgrounds\gta10.png">
+    </Content>
+    <Content Include="Backgrounds\gta10.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Backgrounds\gta11.png">
+    </Content>
+    <Content Include="Backgrounds\gta11.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Backgrounds\gta12.png">
+    </Content>
+    <Content Include="Backgrounds\gta12.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Backgrounds\gta13.png">
+    </Content>
+    <Content Include="Backgrounds\gta13.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Backgrounds\gta2.png">
+    </Content>
+    <Content Include="Backgrounds\gta2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Backgrounds\gta7.png">
+    </Content>
+    <Content Include="Backgrounds\gta7.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Backgrounds\gta8.png">
+    </Content>
+    <Content Include="Backgrounds\gta8.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Backgrounds\gta14.png">
+    <Content Include="Backgrounds\gta14.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Backgrounds\gta15.png">
+    </Content>
+    <Content Include="Backgrounds\gta15.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Backgrounds\gta16.png">
+    </Content>
+    <Content Include="Backgrounds\gta16.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Backgrounds\gta17.png">
+    </Content>
+    <Content Include="Backgrounds\gta17.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Backgrounds\gta18.png">
+    </Content>
+    <Content Include="Backgrounds\gta18.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Backgrounds\gta19.png">
+    </Content>
+    <Content Include="Backgrounds\gta19.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Backgrounds\gta20.png">
+    <Content Include="Backgrounds\gta20.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Backgrounds\gta21.png">
+    </Content>
+    <Content Include="Backgrounds\gta21.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Backgrounds\gta22.png">
+    </Content>
+    <Content Include="Backgrounds\gta22.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Backgrounds\gta23.png">
+    </Content>
+    <Content Include="Backgrounds\gta23.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Backgrounds\gta24.png">
+    </Content>
+    <Content Include="Backgrounds\gta24.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Backgrounds\gta25.png">
+    </Content>
+    <Content Include="Backgrounds\gta25.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Backgrounds\gta26.png">
+    </Content>
+    <Content Include="Backgrounds\gta26.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Backgrounds\gta27.png">
+    </Content>
+    <Content Include="Backgrounds\gta27.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Backgrounds\gta9.png">
+    <Content Include="Backgrounds\gta9.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Backgrounds\gta3.png">
+    <Content Include="Backgrounds\gta3.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Backgrounds\gta4.png">
+    </Content>
+    <Content Include="Backgrounds\gta4.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Backgrounds\gta5.png">
+    </Content>
+    <Content Include="Backgrounds\gta5.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Backgrounds\gta6.png">
+    </Content>
+    <Content Include="Backgrounds\gta6.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -366,56 +366,56 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Covers\Games\gta_1.png">
+    <Content Include="Covers\Games\gta_1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Covers\Games\gta_iii.png">
+    </Content>
+    <Content Include="Covers\Games\gta_iii.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Covers\Games\gta_iv.png">
+    </Content>
+    <Content Include="Covers\Games\gta_iv.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Covers\Games\gta_sa.png">
+    </Content>
+    <Content Include="Covers\Games\gta_sa.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Covers\Games\gta_v.png">
+    </Content>
+    <Content Include="Covers\Games\gta_v.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Covers\Games\gta_vc.png">
+    </Content>
+    <Content Include="Covers\Games\gta_vc.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Covers\Games\gta_vcs.png">
+    </Content>
+    <Content Include="Covers\Games\gta_vcs.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Covers\Games\gta_2.png">
+    <Content Include="Covers\Games\gta_2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Covers\Basics\mainlogo.png">
+    <Content Include="Covers\Basics\mainlogo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Covers\Basics\app_logo.png">
+    <Content Include="Covers\Basics\app_logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Covers\Basics\app_icon.ico">
+    <Content Include="Covers\Basics\app_icon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="app_icon.ico" />
-    <Content Include="data\data_set.mdf">
+    <Content Include="data\GTA_base.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\data_set_log.ldf">
+    <Content Include="data\GTA_base_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>data_set.mdf</DependentUpon>
+      <DependentUpon>GTA_base.mdf</DependentUpon>
     </Content>
     <Content Include="Sounds\menu_down.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

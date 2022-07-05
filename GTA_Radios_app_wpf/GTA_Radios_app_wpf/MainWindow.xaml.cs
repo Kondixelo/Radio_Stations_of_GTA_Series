@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Media;
 using System.Text;
@@ -74,20 +75,19 @@ namespace GTA_Radios_app_wpf
         public void ChangeBackground()
         {
             Random r = new Random();
-            rightImageIndex = r.Next(1, 27);
-            leftImageIndex = r.Next(1, 27);
+            int countFiles = Directory.GetFiles("Backgrounds").Length;
+            rightImageIndex = r.Next(1, countFiles);
+            leftImageIndex = r.Next(1, countFiles);
             while (leftImageIndex == rightImageIndex)
             {
                 leftImageIndex = r.Next(1, 27);
             }
-            var elo = System.Reflection.Assembly.GetExecutingAssembly().Location;
             try
             {
-                var filenameRight = @"C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\Backgrounds\gta" + rightImageIndex + ".png"; //<----------poprawic sciezki
-                //filenameRight = @"pack://application:,,,/GTA_Radios_app_wpf;\Backgrounds\gta" + rightImageIndex + ".png";
-                var filenameLeft = @"C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\Backgrounds\gta"  + leftImageIndex + ".png";//<----------poprawic sciezki
+                var filenameRight = "Backgrounds/gta" + rightImageIndex + ".png";
+                var filenameLeft = "Backgrounds/gta" + leftImageIndex + ".png";
                 RightImageBrush.ImageSource = new BitmapImage(new Uri(filenameRight, UriKind.RelativeOrAbsolute));
-                LefttImageBrush.ImageSource = new BitmapImage(new Uri(filenameLeft, UriKind.Absolute));
+                LefttImageBrush.ImageSource = new BitmapImage(new Uri(filenameLeft, UriKind.RelativeOrAbsolute));
             }
             catch
             {
@@ -187,7 +187,7 @@ namespace GTA_Radios_app_wpf
 
             if (searchPhrase != null)
             {
-                query = "ELECT * FROM [dbo].[Stations] WHERE Name LIKE '%" + searchPhrase + "%' OR Music_genre LIKE '%" + searchPhrase + "%'";
+                query = "SELECT * FROM [dbo].[Stations] WHERE Name LIKE '%" + searchPhrase + "%' OR Music_genre LIKE '%" + searchPhrase + "%'";
             }
             else
             {
@@ -458,7 +458,7 @@ namespace GTA_Radios_app_wpf
                     //isDLC
                     if (gamesObject.IsDLC != 0)
                     {
-                        string query2 = "SELECT * FROM GTAbase.dbo.Games WHERE ID=" + gamesObject.IsDLC;
+                        string query2 = "SELECT * FROM GTA_base.dbo.Games WHERE ID=" + gamesObject.IsDLC;
                         //string connectionPath2 = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=GTAbase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
                         try
                         {
@@ -466,7 +466,7 @@ namespace GTA_Radios_app_wpf
                             run = new Run("DLCs:");
                             run.Foreground = Brushes.LightCyan;
                             ItemInfoBox.Inlines.Add(run);
-                            run = new Run(" This game is DLC for:");
+                            run = new Run(" This game is DLC for: GTA ");
                             run.Foreground = Brushes.LightYellow;
                             ItemInfoBox.Inlines.Add(run);
 
@@ -474,7 +474,7 @@ namespace GTA_Radios_app_wpf
                             foreach (DataRow rdr2 in tbl2.Rows)
                             {
                                 MainGame.Name = rdr2["Name"].ToString();
-                                run = new Run(" " + MainGame.Name);
+                                run = new Run(" " + MainGame.Name + "\r\n");
                                 run.Foreground = Brushes.LightYellow;
                                 ItemInfoBox.Inlines.Add(run);
                             }
@@ -510,71 +510,75 @@ namespace GTA_Radios_app_wpf
                         }
                         */
                     }
-
-                    //DLCs
-                    if (gamesObject.NumberOfDLC == 0)
-                    {
-                        run = new Run("DLCs: ");
-                        run.Foreground = Brushes.LightCyan;
-                        ItemInfoBox.Inlines.Add(run);
-                        run = new Run(gamesObject.NumberOfDLC.ToString() + "\r\n");
-                        run.Foreground = Brushes.LightYellow;
-                        ItemInfoBox.Inlines.Add(run);
-                    }
                     else
                     {
-                        string query3 = "SELECT * FROM GTAbase.dbo.Games WHERE Is_DLC=" + gameID;
-                        //string connectionPath3 = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=GTAbase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-                        try
+                        //DLCs
+                        if (gamesObject.NumberOfDLC == 0)
                         {
-                            DataTable tbl3 = Database_class.Get_DataTable(query3);
-                            run = new Run("DLCs:");
+                            run = new Run("DLCs: ");
                             run.Foreground = Brushes.LightCyan;
                             ItemInfoBox.Inlines.Add(run);
-                            run = new Run(" " + gamesObject.NumberOfDLC.ToString() + ":");
+                            run = new Run(gamesObject.NumberOfDLC.ToString() + "\r\n");
                             run.Foreground = Brushes.LightYellow;
                             ItemInfoBox.Inlines.Add(run);
-
-                            Games DLCs = new Games();
-                            foreach (DataRow rdr3 in tbl3.Rows)
+                        }
+                        else
+                        {
+                            string query3 = "SELECT * FROM GTA_base.dbo.Games WHERE Is_DLC=" + gameID;
+                            //string connectionPath3 = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=GTAbase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                            try
                             {
-                                DLCs.Name = rdr3["Name"].ToString();
-                                run = new Run(" " + DLCs.Name);
+                                DataTable tbl3 = Database_class.Get_DataTable(query3);
+                                run = new Run("DLCs:");
+                                run.Foreground = Brushes.LightCyan;
+                                ItemInfoBox.Inlines.Add(run);
+                                run = new Run(" " + gamesObject.NumberOfDLC.ToString() + ":");
                                 run.Foreground = Brushes.LightYellow;
                                 ItemInfoBox.Inlines.Add(run);
-                            }
-                        }
-                        catch
-                        {
-                            MessageProgramError();
-                        }
 
-                        /*
-                        using (SqlConnection sql3 = new SqlConnection(connectionPath3))
-                        {
-                            sql3.Open();
-                            SqlCommand cmd3 = new SqlCommand(query3, sql3);
-                            cmd.CommandType = CommandType.Text;
-                            SqlDataReader rdr3 = cmd.ExecuteReader();
-
-                            run = new Run("DLCs:");
-                            run.Foreground = Brushes.LightCyan;
-                            ItemInfoBox.Inlines.Add(run);
-                            run = new Run(" " + gamesObject.NumberOfDLC.ToString() + ":");
-                            run.Foreground = Brushes.LightYellow;
-                            ItemInfoBox.Inlines.Add(run);
-
-                            while (rdr3.Read())
-                            {
                                 Games DLCs = new Games();
-                                DLCs.Name = rdr3["Name"].ToString();
-                                run = new Run(" " + DLCs.Name);
+                                foreach (DataRow rdr3 in tbl3.Rows)
+                                {
+                                    DLCs.Name = rdr3["Name"].ToString();
+                                    run = new Run(" " + DLCs.Name + "\r\n");
+                                    run.Foreground = Brushes.LightYellow;
+                                    ItemInfoBox.Inlines.Add(run);
+                                }
+                            }
+                            catch
+                            {
+                                MessageProgramError();
+                            }
+
+                            /*
+                            using (SqlConnection sql3 = new SqlConnection(connectionPath3))
+                            {
+                                sql3.Open();
+                                SqlCommand cmd3 = new SqlCommand(query3, sql3);
+                                cmd.CommandType = CommandType.Text;
+                                SqlDataReader rdr3 = cmd.ExecuteReader();
+
+                                run = new Run("DLCs:");
+                                run.Foreground = Brushes.LightCyan;
+                                ItemInfoBox.Inlines.Add(run);
+                                run = new Run(" " + gamesObject.NumberOfDLC.ToString() + ":");
                                 run.Foreground = Brushes.LightYellow;
                                 ItemInfoBox.Inlines.Add(run);
+
+                                while (rdr3.Read())
+                                {
+                                    Games DLCs = new Games();
+                                    DLCs.Name = rdr3["Name"].ToString();
+                                    run = new Run(" " + DLCs.Name);
+                                    run.Foreground = Brushes.LightYellow;
+                                    ItemInfoBox.Inlines.Add(run);
+                                }
                             }
+                            */
                         }
-                        */
                     }
+
+                    
 
                     //Stations
                     run = new Run("Stations: ");
@@ -595,8 +599,8 @@ namespace GTA_Radios_app_wpf
                     //Cover
                     try
                     {
-                        var CoverImage = @"C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\Covers\Games\" + gamesObject.Cover; //<----------poprawic sciezki
-                        CoverPlace.Source = new BitmapImage(new Uri(CoverImage, UriKind.Absolute));
+                        var CoverImage = "Covers/Games/" + gamesObject.Cover;
+                        CoverPlace.Source = new BitmapImage(new Uri(CoverImage, UriKind.RelativeOrAbsolute));
                         AltText.Visibility = Visibility.Hidden;
                     }
                     catch
@@ -783,8 +787,8 @@ namespace GTA_Radios_app_wpf
                     stationsObject.Station_Cover = rdr["Cover"].ToString();
                     try
                     {
-                        var CoverImage = @"C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\Covers\Stations\" + stationsObject.Station_Cover; //<----------poprawic sciezki
-                        CoverPlace.Source = new BitmapImage(new Uri(CoverImage, UriKind.Absolute));
+                        var CoverImage = "Covers/Stations/" + stationsObject.Station_Cover;
+                        CoverPlace.Source = new BitmapImage(new Uri(CoverImage, UriKind.RelativeOrAbsolute));
                         AltText.Visibility = Visibility.Hidden;
                     }
                     catch
@@ -794,6 +798,24 @@ namespace GTA_Radios_app_wpf
                     }
                     ItemInfoBox.Inlines.Clear();
 
+                    try
+                    {
+                        string query2 = "SELECT * FROM [dbo].[Games] WHERE ID = " + stationsObject.Station_GameID;
+                        DataTable tbl2 = Database_class.Get_DataTable(query2);
+                        foreach(DataRow rdr2 in tbl2.Rows)
+                        {
+                            Run run2 = new Run("Game: ");
+                            run2.Foreground = Brushes.LightCyan;
+                            ItemInfoBox.Inlines.Add(run2);
+                            run2 = new Run("GTA " +rdr2["Name"] + "\r\n");
+                            run2.Foreground = Brushes.LightYellow;
+                            ItemInfoBox.Inlines.Add(run2);
+                        }
+                    }
+                    catch
+                    {
+                        MessageProgramError();
+                    }
 
                     //Name
                     Run run = new Run("Name: ");
@@ -932,7 +954,7 @@ namespace GTA_Radios_app_wpf
 
         private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SoundPlayer player = new SoundPlayer(@"C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\Sounds\menu_up.wav"); //<----------poprawic sciezki
+            SoundPlayer player = new SoundPlayer("Sounds/menu_up.wav");
             player.Load();
             player.Play();
             int itemID;
@@ -961,7 +983,7 @@ namespace GTA_Radios_app_wpf
 
         private void BackButtonClick(object sender, RoutedEventArgs e)
         {
-            SoundPlayer player = new SoundPlayer(@"C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\Sounds\menu_down.wav");
+            SoundPlayer player = new SoundPlayer("Sounds/menu_down.wav");
             player.Load();
             player.Play();
             ItemInfoBox.Inlines.Clear();
@@ -993,7 +1015,7 @@ namespace GTA_Radios_app_wpf
 
         private void MenuButtonClick(object sender, RoutedEventArgs e)
         {
-            SoundPlayer player = new SoundPlayer(@"C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\Sounds\menu_down.wav");
+            SoundPlayer player = new SoundPlayer("Sounds/menu_down.wav");
             player.Load();
             player.Play();
             ItemInfoBox.Inlines.Clear();
@@ -1005,7 +1027,7 @@ namespace GTA_Radios_app_wpf
 
         private void QuitButtonClick(object sender, RoutedEventArgs e)
         {
-            SoundPlayer player = new SoundPlayer(@"C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\Sounds\menu_down.wav");
+            SoundPlayer player = new SoundPlayer("Sounds/menu_down.wav");
             player.Load();
             player.Play();
             Close();
@@ -1013,7 +1035,7 @@ namespace GTA_Radios_app_wpf
         
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            SoundPlayer player = new SoundPlayer(@"C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\Sounds\menu_up.wav");
+            SoundPlayer player = new SoundPlayer("Sounds/menu_up.wav");
             player.Load();
             player.Play();
             Search();
@@ -1031,7 +1053,17 @@ namespace GTA_Radios_app_wpf
 
         public void StationInfoBox(string station)
         {
-            InfoBox.Text = "List of tracks in \"" + station.Substring(station.IndexOf('.') + 2) + "\" station";
+            string firstChar = station.Substring(0, 1);
+            try
+            {
+                Convert.ToInt32(firstChar);
+                InfoBox.Text = "List of tracks in \"" + station.Substring(station.IndexOf('.') + 2) + "\" station";
+            }
+            catch
+            {
+                InfoBox.Text = "List of tracks in \"" + station + "\" station";
+            }
+            
         }
 
         public void SearchInfoBox(string searchPhrase)
@@ -1040,8 +1072,8 @@ namespace GTA_Radios_app_wpf
         }
         public void StartItemInfoBox()
         {
-            var CoverImage = @"C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\Covers\Basics\mainlogo.png"; //<----------poprawic sciezki
-            CoverPlace.Source = new BitmapImage(new Uri(CoverImage, UriKind.Absolute));
+            var CoverImage = "Covers/Basics/mainlogo.png";
+            CoverPlace.Source = new BitmapImage(new Uri(CoverImage, UriKind.RelativeOrAbsolute));
             AltText.Visibility = Visibility.Hidden;
         }
 
@@ -1055,6 +1087,7 @@ namespace GTA_Radios_app_wpf
                 messageCount = 0;
             }
         }
+
         public void MessageProgramError()
         {
             MessageBox.Show("Program error");
@@ -1063,14 +1096,14 @@ namespace GTA_Radios_app_wpf
         private void ListBoxItem_MouseEnter(object sender, MouseEventArgs e)
         {
             MediaPlayer mp = new MediaPlayer();
-            mp.Open(new Uri(@"C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\Sounds\menu_enterMouse.wav")); //<----------poprawic sciezki
+            mp.Open(new Uri("Sounds/menu_enterMouse.wav", UriKind.RelativeOrAbsolute));
             mp.Play();
         }
 
         private void SearchBoxTextChange(object sender, TextChangedEventArgs e)
         {
             MediaPlayer mp = new MediaPlayer();
-            mp.Open(new Uri(@"C:\csharp\Radio_Stations_of_GTA_Series\GTA_Radios_app_wpf\GTA_Radios_app_wpf\Sounds\menu_enterMouse.wav")); //<----------poprawic sciezki
+            mp.Open(new Uri("Sounds/menu_enterMouse.wav",UriKind.RelativeOrAbsolute));
             mp.Play();
         }
     } 
